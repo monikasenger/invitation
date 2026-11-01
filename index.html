@@ -4,6 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0b0716">
 <title>Diwali Invitation | Deeksha Public School</title>
 
 <style>
@@ -14,6 +16,7 @@
 }
 
 :root {
+    color-scheme: light;
     --gold: #ffda75;
     --deep-gold: #d99b28;
     --maroon: #7b1c19;
@@ -23,17 +26,20 @@
 html {
     min-height: 100%;
     background: #0b0716;
+    color-scheme: light;
 }
 
 body {
     min-height: 100vh;
-    background:
-        radial-gradient(ellipse at 50% 0%, #55234e 0%, #24102f 42%, #0b0716 100%);
+    min-height: 100dvh;
+    background: radial-gradient(ellipse at 50% 0%, #55234e 0%, #24102f 42%, #0b0716 100%);
     font-family: "Noto Sans Devanagari", "Mangal", sans-serif;
-    color: white;
+    color: #ffffff;
     overflow-x: hidden;
-    padding: 12px 0 90px;
+    padding: 12px 0 20px;
     position: relative;
+    isolation: isolate;
+    color-scheme: light;
 }
 
 /* OUTSIDE BACKGROUND ANIMATION */
@@ -75,7 +81,7 @@ body::after {
     to { opacity: 1; }
 }
 
-/* FLOATING GOLDEN PARTICLES OUTSIDE PAGE */
+/* FLOATING GOLDEN PARTICLES */
 
 .outer-particles {
     position: fixed;
@@ -93,59 +99,19 @@ body::after {
     opacity: .8;
 }
 
-.outer-particle:nth-child(1) {
-    left: 5%;
-    top: 15%;
-    font-size: 20px;
-}
-
-.outer-particle:nth-child(2) {
-    left: 90%;
-    top: 25%;
-    font-size: 16px;
-    animation-delay: 1s;
-}
-
-.outer-particle:nth-child(3) {
-    left: 8%;
-    top: 70%;
-    font-size: 18px;
-    animation-delay: 2s;
-}
-
-.outer-particle:nth-child(4) {
-    left: 88%;
-    top: 78%;
-    font-size: 23px;
-    animation-delay: 3s;
-}
-
-.outer-particle:nth-child(5) {
-    left: 50%;
-    top: 8%;
-    font-size: 14px;
-    animation-delay: 1.5s;
-}
-
-.outer-particle:nth-child(6) {
-    left: 48%;
-    top: 90%;
-    font-size: 18px;
-    animation-delay: 2.5s;
-}
+.outer-particle:nth-child(1) { left: 5%; top: 15%; font-size: 20px; }
+.outer-particle:nth-child(2) { left: 90%; top: 25%; font-size: 16px; animation-delay: 1s; }
+.outer-particle:nth-child(3) { left: 8%; top: 70%; font-size: 18px; animation-delay: 2s; }
+.outer-particle:nth-child(4) { left: 88%; top: 78%; font-size: 23px; animation-delay: 3s; }
+.outer-particle:nth-child(5) { left: 50%; top: 8%; font-size: 14px; animation-delay: 1.5s; }
+.outer-particle:nth-child(6) { left: 48%; top: 90%; font-size: 18px; animation-delay: 2.5s; }
 
 @keyframes outerFloat {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg) scale(.7);
-        opacity: .25;
-    }
-    50% {
-        transform: translateY(-35px) rotate(180deg) scale(1.4);
-        opacity: 1;
-    }
+    0%, 100% { transform: translateY(0) rotate(0deg) scale(.7); opacity: .25; }
+    50% { transform: translateY(-35px) rotate(180deg) scale(1.4); opacity: 1; }
 }
 
-/* OUTSIDE DIWALI LIGHTS */
+/* OUTSIDE DIYAS */
 
 .outer-diya {
     position: fixed;
@@ -157,24 +123,12 @@ body::after {
     animation: outerDiya 2.5s ease-in-out infinite alternate;
 }
 
-.outer-diya.left {
-    left: 15px;
-}
-
-.outer-diya.right {
-    right: 15px;
-    animation-delay: 1s;
-}
+.outer-diya.left { left: 15px; }
+.outer-diya.right { right: 15px; animation-delay: 1s; }
 
 @keyframes outerDiya {
-    from {
-        transform: translateY(0) scale(.9);
-        filter: drop-shadow(0 0 5px #ff9d00);
-    }
-    to {
-        transform: translateY(-10px) scale(1.1);
-        filter: drop-shadow(0 0 18px #ffdf55);
-    }
+    from { transform: translateY(0) scale(.9); filter: drop-shadow(0 0 5px #ff9d00); }
+    to { transform: translateY(-10px) scale(1.1); filter: drop-shadow(0 0 18px #ffdf55); }
 }
 
 /* PAGE DESIGN */
@@ -183,8 +137,9 @@ body::after {
     display: none;
     position: relative;
     width: min(100vw, 480px);
-    aspect-ratio: 9 / 16;
-    height: auto;
+    height: min(177.78vw, 853px);
+    max-height: calc(100dvh - 24px);
+    min-height: 480px;
     margin: 12px auto;
     overflow: hidden;
     border: 2px solid var(--gold);
@@ -206,8 +161,7 @@ body::after {
 
 .book-page.active {
     display: block;
-    animation: pageEnter 1s cubic-bezier(.2,.8,.2,1) both,
-               borderGlow 3s ease-in-out infinite;
+    animation: pageEnter 1s cubic-bezier(.2,.8,.2,1) both, borderGlow 3s ease-in-out infinite;
 }
 
 .background {
@@ -342,8 +296,7 @@ body::after {
     z-index: 6;
     font-size: clamp(24px, 7vw, 35px);
     filter: drop-shadow(0 0 7px #ffb51e);
-    animation: diyaFloat 3s ease-in-out infinite,
-               diyaGlow 2s ease-in-out infinite alternate;
+    animation: diyaFloat 3s ease-in-out infinite, diyaGlow 2s ease-in-out infinite alternate;
     pointer-events: none;
 }
 
@@ -397,6 +350,7 @@ body::after {
     font-weight: 900;
     z-index: 7;
     animation: goldenGlow 3s infinite, textEntrance 1.4s ease both;
+    text-shadow: 0 1px 3px #fff4d5, 0 0 8px #fff0c5;
 }
 
 .photo-grid {
@@ -409,23 +363,15 @@ body::after {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
     gap: 0;
-    padding: 0;
-    margin: 0;
 }
 
 .photo-frame {
     width: 100%;
     height: 100%;
-    padding: 0;
-    margin: 0;
     border: none;
-    border-radius: 0;
-    background: none;
-    box-shadow: none;
     overflow: hidden;
     opacity: 0;
-    animation: photoReveal 1s cubic-bezier(.2,.8,.2,1) both,
-               photoFloat 4s ease-in-out infinite;
+    animation: photoReveal 1s cubic-bezier(.2,.8,.2,1) both, photoFloat 4s ease-in-out infinite;
 }
 
 .photo-frame img {
@@ -434,9 +380,6 @@ body::after {
     display: block;
     object-fit: cover;
     border: none;
-    border-radius: 0;
-    padding: 0;
-    margin: 0;
     transition: transform .7s ease, filter .7s ease;
 }
 
@@ -473,7 +416,7 @@ body::after {
     width: 92%;
     text-align: center;
     color: #71251d;
-    font-size: clamp(17px, 4.2vw, 22px);
+    font-size: clamp(16px, 4.2vw, 22px);
     line-height: 1.95;
     font-weight: bold;
     z-index: 7;
@@ -501,10 +444,9 @@ body::after {
     line-height: 1.8;
     border: 3px double #d89a29;
     border-radius: 25px;
-    background: linear-gradient(135deg, #fff1c966, #f4c65b55, #fff1c966);
+    background: linear-gradient(135deg, #fff1c9ee, #f4c65be8, #fff1c9ee);
     box-shadow: 0 0 12px #ffdc78, inset 0 0 18px #ffe6a0;
-    animation: floatText 3s infinite, goldenGlow 2.5s infinite,
-               themeShine 4s infinite, textEntrance 1.4s ease both;
+    animation: floatText 3s infinite, goldenGlow 2.5s infinite, themeShine 4s infinite, textEntrance 1.4s ease both;
     z-index: 7;
 }
 
@@ -533,6 +475,7 @@ body::after {
     font-size: clamp(18px, 4.2vw, 25px);
     font-weight: 900;
     z-index: 7;
+    text-shadow: 0 1px 3px #fff3d2, 0 0 8px #ffe3a0;
     animation: poemReveal 2s ease both;
 }
 
@@ -547,6 +490,7 @@ body::after {
     font-weight: bold;
     line-height: 1.7;
     z-index: 7;
+    text-shadow: 0 1px 3px #fff3d2, 0 0 8px #ffe3a0;
     animation: textEntrance 1.6s ease both;
 }
 
@@ -555,11 +499,11 @@ body::after {
 .details-content {
     position: absolute;
     top: 25%;
-    left: 13%;
-    width: 75%;
+    left: 10%;
+    width: 80%;
     text-align: center;
     color: #70251b;
-    font-size: clamp(19px, 4.6vw, 26px);
+    font-size: clamp(17px, 4.6vw, 26px);
     font-weight: bold;
     line-height: 1.6;
     z-index: 7;
@@ -574,7 +518,8 @@ body::after {
     padding: 10px 8px;
     border: 2px solid #d99b28;
     border-radius: 16px;
-    background: linear-gradient(135deg, #fff4cfdd, #ffe0a0cc);
+    background: linear-gradient(135deg, #fff4cfee, #ffe0a0ee);
+    color: #6f1e18;
     box-shadow: 0 0 10px #f7c44b, inset 0 0 10px #fff5ca;
     animation: cardGlow 3s ease-in-out infinite;
 }
@@ -625,10 +570,11 @@ body::after {
 .map-link {
     display: block;
     width: fit-content;
+    max-width: 100%;
     margin: 12px auto;
     padding: 9px 18px;
     background: #8b250d;
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
     border-radius: 20px;
     font-weight: bold;
@@ -645,20 +591,19 @@ body::after {
     50% { box-shadow: 0 0 22px #fff0a0, 0 0 32px #ff9c21; }
 }
 
-/* NAVIGATION BUTTON AT BOTTOM */
+/* NAVIGATION BUTTON INSIDE EACH PAGE */
 
 .navigation {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(100%, 480px);
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100;
+    z-index: 20;
+    padding: 8px 12px;
     pointer-events: none;
-    padding: 0 12px;
 }
 
 .nav-button {
@@ -667,7 +612,8 @@ body::after {
     pointer-events: auto;
     border: 2px solid #ffe5a0;
     border-radius: 30px;
-    padding: 13px 32px;
+    padding: 12px 32px;
+    min-width: 155px;
     background: linear-gradient(135deg, #fff0b0, #ffce62, #d38b1b);
     color: #4b2009;
     font-size: 17px;
@@ -676,6 +622,7 @@ body::after {
     cursor: pointer;
     box-shadow: 0 0 12px #ffce55, 0 0 25px #d88c1c66;
     animation: navGlow 2s ease-in-out infinite alternate;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .nav-button::after {
@@ -700,36 +647,115 @@ body::after {
     to { box-shadow: 0 0 18px #fff0a0, 0 0 30px #ff9c21; }
 }
 
-.nav-button:hover {
-    transform: translateY(-3px);
-}
-
 .nav-button:active {
     transform: scale(.94);
 }
 
-/* RESPONSIVE */
+/* PHONE RESPONSIVE */
 
-@media (min-width: 481px) {
-    .book-page { width: min(100%, 480px); }
+@media (max-width: 480px) {
+    body {
+        padding: 8px 0;
+    }
+
+    .book-page {
+        width: calc(100vw - 16px);
+        height: min(calc((100vw - 16px) * 1.7778), calc(100dvh - 16px));
+        min-height: 0;
+        margin: 8px auto;
+        border-radius: 14px;
+    }
+
+    .navigation {
+        bottom: 9px;
+    }
+
+    .nav-button {
+        padding: 11px 28px;
+        font-size: 16px;
+    }
+
+    .poem {
+        top: 25%;
+        font-size: clamp(14px, 4vw, 19px);
+        line-height: 1.85;
+    }
+
+    .details-content {
+        top: 20%;
+    }
+
+    .detail-card {
+        margin: 10px 0;
+        padding: 8px 6px;
+    }
+
+    .theme-main {
+        top: 29%;
+    }
+
+    .theme-line {
+        top: 64%;
+    }
+
+    .theme-tagline {
+        top: 71%;
+    }
 }
 
 @media (max-width: 350px) {
     .poem {
-        top: 24%;
+        top: 23%;
         font-size: 14px;
-        line-height: 1.85;
+        line-height: 1.8;
     }
 
-    .photo-grid { height: 38%; }
+    .photo-grid {
+        height: 36%;
+    }
 
     .nav-button {
-        padding: 11px 26px;
+        padding: 10px 25px;
         font-size: 15px;
     }
 
-    .details-content { top: 17%; }
-    .detail-card { margin: 9px 0; padding: 8px 5px; }
+    .details-content {
+        top: 17%;
+    }
+
+    .detail-card {
+        margin: 8px 0;
+        padding: 7px 5px;
+    }
+}
+
+@media (max-height: 650px) {
+    .book-page {
+        height: calc(100dvh - 16px);
+        min-height: 0;
+    }
+
+    .details-content {
+        top: 15%;
+    }
+
+    .detail-card {
+        margin: 7px 0;
+        padding: 6px;
+    }
+
+    .poem {
+        top: 20%;
+        line-height: 1.7;
+    }
+
+    .navigation {
+        bottom: 5px;
+    }
+
+    .nav-button {
+        padding: 9px 25px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -758,9 +784,7 @@ body::after {
 <div class="outer-diya right">🪔</div>
 
 <!-- BACKGROUND MUSIC -->
-<audio id="pageMusic" autoplay loop preload="auto" playsinline>
-    <source src="song/song.mp3" type="audio/mpeg">
-</audio>
+<audio id="pageMusic" src="./song.mp3" loop preload="auto" playsinline></audio>
 
 <!-- PAGE 1 -->
 <section class="book-page active" id="page1">
@@ -785,6 +809,10 @@ body::after {
 
     <span class="diya left">🪔</span>
     <span class="diya right">🪔</span>
+
+    <div class="navigation">
+        <button class="nav-button" onclick="nextPage()">खोलें ✨</button>
+    </div>
 </section>
 
 <!-- PAGE 2 -->
@@ -827,6 +855,10 @@ body::after {
 
     <span class="diya left">🪔</span>
     <span class="diya right">🪔</span>
+
+    <div class="navigation">
+        <button class="nav-button" onclick="nextPage()">अगला पृष्ठ ❯</button>
+    </div>
 </section>
 
 <!-- PAGE 3 -->
@@ -867,6 +899,10 @@ body::after {
 
     <span class="diya left">🪔</span>
     <span class="diya right">🪔</span>
+
+    <div class="navigation">
+        <button class="nav-button" onclick="nextPage()">अगला पृष्ठ ❯</button>
+    </div>
 </section>
 
 <!-- PAGE 4 -->
@@ -906,6 +942,10 @@ body::after {
 
     <span class="diya left">🪔</span>
     <span class="diya right">🪔</span>
+
+    <div class="navigation">
+        <button class="nav-button" onclick="nextPage()">अगला पृष्ठ ❯</button>
+    </div>
 </section>
 
 <!-- PAGE 5 -->
@@ -952,7 +992,7 @@ body::after {
         <a class="map-link"
            href="https://www.google.com/maps/search/?api=1&query=28.47946038116353,77.33184703773287"
            target="_blank"
-           rel="noopener">
+           rel="noopener noreferrer">
             📍 View Location on Google Maps
         </a>
 
@@ -960,123 +1000,124 @@ body::after {
 
     <span class="diya left">🪔</span>
     <span class="diya right">🪔</span>
-</section>
 
-<!-- BOTTOM NAVIGATION BUTTON -->
-<div class="navigation">
-    <button class="nav-button" id="nextButton" onclick="nextPage()">
-        खोलें
-    </button>
-</div>
+    <div class="navigation">
+        <button class="nav-button" onclick="restartInvitation()">फिर से देखें ↻</button>
+    </div>
+</section>
 
 <script>
 let currentPage = 1;
 const totalPages = 5;
 
 const music = document.getElementById("pageMusic");
-const nextButton = document.getElementById("nextButton");
+let musicStarted = false;
 
-/* BACKGROUND MUSIC */
-
+/* MUSIC SETTINGS */
 music.volume = 1;
 
+/*
+  IMPORTANT:
+  Mobile browsers block autoplay in many cases.
+  The first Open button click starts the music.
+*/
 function startMusic() {
-    music.play().catch(function() {
-        // Browser autoplay block kar sakta hai.
-        // Pehli user interaction par dobara try hoga.
-    });
+    if (!music) return;
+
+    if (!music.paused && musicStarted) return;
+
+    const playPromise = music.play();
+
+    if (playPromise !== undefined) {
+        playPromise.then(function() {
+            musicStarted = true;
+        }).catch(function(error) {
+            console.log("Music playback could not start:", error);
+        });
+    }
 }
 
+/* TRY AUTOPLAY WHEN WEBSITE LOADS */
 window.addEventListener("load", function() {
     startMusic();
 });
 
+/* START AGAIN ON FIRST TOUCH/CLICK IF AUTOPLAY WAS BLOCKED */
 document.addEventListener("pointerdown", function() {
     if (music.paused) {
         startMusic();
     }
 }, { once: true });
 
-document.addEventListener("keydown", function() {
-    if (music.paused) {
-        startMusic();
-    }
-}, { once: true });
-
-/* PAGE NAVIGATION */
-
+/* SHOW PAGE */
 function showPage(page) {
     if (page < 1 || page > totalPages) return;
-
-    currentPage = page;
 
     document.querySelectorAll(".book-page").forEach(function(section) {
         section.classList.remove("active");
     });
 
     const selectedPage = document.getElementById("page" + page);
-    selectedPage.classList.add("active");
 
-    updateNavigation();
+    if (selectedPage) {
+        selectedPage.classList.add("active");
+    }
+
+    currentPage = page;
 
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
-
-    // Music page change par continue rahega.
 }
 
-function updateNavigation() {
-    if (currentPage === 1) {
-        nextButton.textContent = "खोलें";
-    }
-    else if (currentPage === totalPages) {
-        nextButton.textContent = "फिर से देखें ↻";
-    }
-    else {
-        nextButton.textContent = "अगला पृष्ठ ❯";
-    }
-}
-
+/* NEXT PAGE */
 function nextPage() {
+    // Call play directly from the button click.
+    // This is important for mobile autoplay restrictions.
+    startMusic();
+
     if (currentPage < totalPages) {
         showPage(currentPage + 1);
-    } else {
-        showPage(1);
     }
 }
 
-/* MOBILE SWIPE - ONLY NEXT PAGE */
+/* RESTART INVITATION */
+function restartInvitation() {
+    startMusic();
+    showPage(1);
+}
 
+/* MOBILE SWIPE - NEXT ONLY */
 let touchStartX = 0;
-let touchEndX = 0;
+let touchStartY = 0;
 
 document.addEventListener("touchstart", function(event) {
     touchStartX = event.changedTouches[0].screenX;
+    touchStartY = event.changedTouches[0].screenY;
 }, { passive: true });
 
 document.addEventListener("touchend", function(event) {
-    touchEndX = event.changedTouches[0].screenX;
+    const touchEndX = event.changedTouches[0].screenX;
+    const touchEndY = event.changedTouches[0].screenY;
 
-    const difference = touchStartX - touchEndX;
+    const differenceX = touchStartX - touchEndX;
+    const differenceY = Math.abs(touchStartY - touchEndY);
 
-    if (Math.abs(difference) > 65 && difference > 0) {
-        nextPage();
+    // Swipe left only. No previous-page option.
+    if (differenceX > 70 && differenceY < 80) {
+        if (currentPage < totalPages) {
+            nextPage();
+        }
     }
 }, { passive: true });
 
-/* KEYBOARD - RIGHT ARROW */
-
+/* KEYBOARD SUPPORT */
 document.addEventListener("keydown", function(event) {
     if (event.key === "ArrowRight") {
         nextPage();
     }
 });
-
-/* INITIAL BUTTON */
-updateNavigation();
-
 </script>
 
 </body>
