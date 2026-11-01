@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -110,6 +111,7 @@ body {
 }
 
 /* TWINKLING STARS */
+
 .particle {
     position: absolute;
     z-index: 6;
@@ -132,6 +134,7 @@ body {
 }
 
 /* FLOWER PETALS */
+
 .petal {
     position: absolute;
     top: -8%;
@@ -156,6 +159,7 @@ body {
 }
 
 /* FIREWORKS */
+
 .firework {
     position: absolute;
     width: 5px;
@@ -181,6 +185,7 @@ body {
 }
 
 /* DIYAS */
+
 .diya {
     position: absolute;
     bottom: 4%;
@@ -205,8 +210,6 @@ body {
     to { filter: drop-shadow(0 0 17px #ffdf55); }
 }
 
-.gold-glow { animation: goldenGlow 2.5s ease-in-out infinite; }
-
 @keyframes goldenGlow {
     0%, 100% { text-shadow: 0 0 7px #ffd75c, 0 0 15px #e9a526; }
     50% { text-shadow: 0 0 15px #fff4b0, 0 0 30px #ffb700, 0 0 45px #e98c21; }
@@ -223,6 +226,7 @@ body {
 }
 
 /* PAGE 1 */
+
 .school-title {
     position: absolute;
     top: 13%;
@@ -261,7 +265,8 @@ body {
     z-index: 7;
 }
 
-/* PAGE 2 PHOTOS */
+/* PAGE 2 */
+
 .prep-section {
     position: absolute;
     top: 0;
@@ -349,7 +354,8 @@ body {
     50% { translate: 0 -3px; }
 }
 
-/* PAGE 3 POEM */
+/* PAGE 3 */
+
 .poem {
     position: absolute;
     top: 28%;
@@ -370,7 +376,8 @@ body {
     to { opacity: 1; translate: 0 0; letter-spacing: 0; }
 }
 
-/* PAGE 4 FUNCTION THEME */
+/* PAGE 4 */
+
 .theme-main {
     position: absolute;
     top: 31%;
@@ -433,7 +440,8 @@ body {
     animation: textEntrance 1.6s ease both;
 }
 
-/* PAGE 5 EVENT DETAILS */
+/* PAGE 5 */
+
 .details-content {
     position: absolute;
     top: 25%;
@@ -503,6 +511,7 @@ body {
 }
 
 /* MAP BUTTON */
+
 .map-link {
     display: block;
     width: fit-content;
@@ -541,7 +550,27 @@ body {
     z-index: 7;
 }
 
+/* MUSIC BUTTON */
+
+.music-button {
+    display: block;
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    z-index: 100;
+    border: 2px solid #fff0b0;
+    border-radius: 30px;
+    padding: 11px 17px;
+    background: linear-gradient(135deg, #fff0b0, #ffce62, #d38b1b);
+    color: #4b2009;
+    font-size: 14px;
+    font-weight: 900;
+    box-shadow: 0 0 12px #ffce55, 0 0 25px #d88c1c66;
+    cursor: pointer;
+}
+
 /* NAVIGATION */
+
 .navigation {
     width: min(100%, 480px);
     margin: 0 auto 20px;
@@ -600,6 +629,7 @@ body {
 }
 
 /* RESPONSIVE */
+
 @media (min-width: 481px) {
     .book-page { width: min(100%, 480px); }
 }
@@ -611,11 +641,13 @@ body {
         line-height: 1.85;
     }
 
-    .photo-grid {
-        height: 38%;
+    .photo-grid { height: 38%; }
+
+    .navigation button {
+        padding: 9px 10px;
+        font-size: 12px;
     }
 
-    .navigation button { padding: 9px 10px; font-size: 12px; }
     .details-content { top: 17%; }
     .detail-card { margin: 9px 0; padding: 8px 5px; }
 }
@@ -631,6 +663,15 @@ body {
 </head>
 
 <body>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="pageMusic" autoplay loop preload="auto">
+    <source src="song/song.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-button" id="musicButton" onclick="toggleMusic()">
+    🎵 Play Music
+</button>
 
 <!-- PAGE 1 -->
 <section class="book-page active" id="page1">
@@ -798,6 +839,7 @@ body {
     <span class="firework two"></span>
 
     <div class="details-content">
+
         <div class="detail-card">
             <span class="detail-label">✦ दिनांक ✦</span>
             <span class="detail-value">6 नवंबर, 2026</span>
@@ -822,6 +864,7 @@ body {
            rel="noopener">
             📍 View Location on Google Maps
         </a>
+
     </div>
 
     <div class="host">
@@ -844,6 +887,53 @@ body {
 let currentPage = 1;
 const totalPages = 5;
 
+const music = document.getElementById("pageMusic");
+const musicButton = document.getElementById("musicButton");
+
+/* MUSIC PLAYBACK */
+
+function updateMusicButton() {
+    musicButton.textContent = music.paused
+        ? "🎵 Play Music"
+        : "🔊 Music On";
+}
+
+function startMusic() {
+    music.play()
+        .then(() => {
+            updateMusicButton();
+        })
+        .catch(() => {
+            updateMusicButton();
+        });
+}
+
+function toggleMusic() {
+    if (music.paused) {
+        startMusic();
+    } else {
+        music.pause();
+        updateMusicButton();
+    }
+}
+
+/* Try autoplay when website opens */
+window.addEventListener("load", function() {
+    startMusic();
+});
+
+/* Try again after the first user interaction if autoplay was blocked */
+document.addEventListener("click", function() {
+    if (music.paused) {
+        startMusic();
+    }
+}, { once: true });
+
+music.addEventListener("play", updateMusicButton);
+music.addEventListener("pause", updateMusicButton);
+
+/* PAGE NAVIGATION */
+
 function showPage(page) {
     if (page < 1 || page > totalPages) return;
 
@@ -861,6 +951,7 @@ function showPage(page) {
 
     updateNavigation();
 
+    /* Music continues while changing pages */
     window.scrollTo({
         top: 0,
         behavior: "smooth"
@@ -892,6 +983,7 @@ function previousPage() {
 }
 
 /* MOBILE SWIPE */
+
 let touchStartX = 0;
 let touchEndX = 0;
 
@@ -918,4 +1010,3 @@ updateNavigation();
 
 </body>
 </html>
-
