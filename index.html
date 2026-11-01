@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diwali Invitation | Deeksha Public School</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --gold: #ffda75;
+    --deep-gold: #d99b28;
+    --maroon: #7b1c19;
+    --cream: #fff1c9;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(ellipse at top, #55234e 0%, #24102f 45%, #0b0716 100%);
+    font-family: "Noto Sans Devanagari", "Mangal", sans-serif;
+    color: white;
+    overflow-x: hidden;
+    padding-bottom: 15px;
+}
+
+.book-page {
+    display: none;
+    position: relative;
+    width: min(100vw, 480px);
+    aspect-ratio: 9 / 16;
+    height: auto;
+    margin: 12px auto;
+    overflow: hidden;
+    border: 2px solid var(--gold);
+    border-radius: 17px;
+    box-shadow: 0 0 10px #ffdf83, 0 0 25px #e7a62b99, 0 0 65px #b65b1c55;
+    isolation: isolate;
+    background: #3a1520;
+}
+
+.book-page::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border: 1px solid #ffe6a5aa;
+    border-radius: 12px;
+    z-index: 8;
+    pointer-events: none;
+}
+
+.book-page.active {
+    display: block;
+    animation: pageEnter 1s cubic-bezier(.2,.8,.2,1) both,
+               borderGlow 3s ease-in-out infinite;
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: -4;
+}
+
+.book-page.active .background {
+    animation: backgroundZoom 12s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.07); }
+}
+
+.page-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    background: linear-gradient(180deg, #210b2022, transparent 35%, #210b2022);
+    pointer-events: none;
+}
+
+.light-sweep {
+    position: absolute;
+    inset: -100%;
+    z-index: 3;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent 43%, #fff6d044 49%, #ffffff18 51%, transparent 57%);
+    animation: lightSweep 6s ease-in-out infinite;
+}
+
+@keyframes lightSweep {
+    0% { transform: translateX(-45%) translateY(-15%); }
+    100% { transform: translateX(45%) translateY(15%); }
+}
+
+@keyframes borderGlow {
+    0%, 100% { box-shadow: 0 0 10px #ffdf83, 0 0 25px #e7a62b77, 0 0 55px #b65b1c33; }
+    50% { box-shadow: 0 0 18px #fff0a8, 0 0 38px #ffbd39, 0 0 75px #e8792388; }
+}
+
+@keyframes pageEnter {
+    from { opacity: 0; transform: perspective(1000px) rotateY(8deg) scale(.94); }
+    to { opacity: 1; transform: perspective(1000px) rotateY(0) scale(1); }
+}
+
+/* TWINKLING STARS */
+.particle {
+    position: absolute;
+    z-index: 6;
+    pointer-events: none;
+    color: #fff2b0;
+    text-shadow: 0 0 7px #ffc52f, 0 0 15px #ffb900;
+    animation: twinkle 1.8s ease-in-out infinite alternate;
+}
+
+.p1 { top: 10%; left: 9%; font-size: 20px; }
+.p2 { top: 24%; right: 9%; font-size: 15px; animation-delay: .5s; }
+.p3 { bottom: 17%; left: 12%; font-size: 18px; animation-delay: 1s; }
+.p4 { bottom: 10%; right: 12%; font-size: 22px; animation-delay: .8s; }
+.p5 { top: 48%; left: 5%; font-size: 13px; animation-delay: 1.3s; }
+.p6 { top: 65%; right: 7%; font-size: 17px; animation-delay: .3s; }
+
+@keyframes twinkle {
+    0% { opacity: .2; transform: scale(.6) rotate(0deg); }
+    100% { opacity: 1; transform: scale(1.5) rotate(45deg); }
+}
+
+/* FLOWER PETALS */
+.petal {
+    position: absolute;
+    top: -8%;
+    z-index: 6;
+    pointer-events: none;
+    color: #ffb3c5;
+    font-size: 17px;
+    text-shadow: 0 0 8px #ff7c9e;
+    animation: fall 10s linear infinite;
+}
+
+.petal-a { left: 10%; animation-delay: 0s; }
+.petal-b { left: 35%; animation-delay: 3s; }
+.petal-c { left: 65%; animation-delay: 1.5s; }
+.petal-d { left: 88%; animation-delay: 5s; }
+
+@keyframes fall {
+    0% { transform: translateY(-5%) translateX(0) rotate(0deg); opacity: 0; }
+    15% { opacity: .9; }
+    50% { transform: translateY(550%) translateX(25px) rotate(240deg); }
+    100% { transform: translateY(1200%) translateX(-20px) rotate(520deg); opacity: 0; }
+}
+
+/* FIREWORKS */
+.firework {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    z-index: 4;
+    pointer-events: none;
+    background: #fff3a0;
+    box-shadow: 0 -24px #ffdf76, 17px -17px #ffad54, 24px 0 #fff2a0,
+                17px 17px #ffdf76, 0 24px #ffad54, -17px 17px #fff2a0,
+                -24px 0 #ffdf76, -17px -17px #ffad54;
+    animation: firework 2.8s ease-out infinite;
+}
+
+.firework.one { top: 17%; left: 18%; }
+.firework.two { top: 30%; right: 18%; animation-delay: 1.3s; }
+.firework.three { bottom: 20%; right: 22%; animation-delay: 2s; }
+
+@keyframes firework {
+    0%, 100% { opacity: 0; transform: scale(.25) rotate(0deg); }
+    35% { opacity: 1; transform: scale(1) rotate(45deg); }
+    70% { opacity: .6; transform: scale(.65) rotate(90deg); }
+}
+
+/* DIYAS */
+.diya {
+    position: absolute;
+    bottom: 4%;
+    z-index: 6;
+    font-size: clamp(24px, 7vw, 35px);
+    filter: drop-shadow(0 0 7px #ffb51e);
+    animation: diyaFloat 3s ease-in-out infinite,
+               diyaGlow 2s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+.diya.left { left: 8%; }
+.diya.right { right: 8%; animation-delay: 1.2s, 1.2s; }
+
+@keyframes diyaFloat {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-9px) rotate(3deg); }
+}
+
+@keyframes diyaGlow {
+    from { filter: drop-shadow(0 0 5px #ff9d00); }
+    to { filter: drop-shadow(0 0 17px #ffdf55); }
+}
+
+.gold-glow { animation: goldenGlow 2.5s ease-in-out infinite; }
+
+@keyframes goldenGlow {
+    0%, 100% { text-shadow: 0 0 7px #ffd75c, 0 0 15px #e9a526; }
+    50% { text-shadow: 0 0 15px #fff4b0, 0 0 30px #ffb700, 0 0 45px #e98c21; }
+}
+
+@keyframes floatText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes textEntrance {
+    0% { opacity: 0; translate: 0 25px; scale: .94; }
+    100% { opacity: 1; translate: 0 0; scale: 1; }
+}
+
+/* PAGE 1 */
+.school-title {
+    position: absolute;
+    top: 13%;
+    left: 5%;
+    width: 90%;
+    text-align: center;
+    color: #8b1515;
+    font-size: clamp(22px, 6vw, 34px);
+    font-weight: 900;
+    z-index: 7;
+    animation: goldenGlow 2.5s infinite, textEntrance 1.4s ease both;
+}
+
+.school-sector {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    width: 90%;
+    text-align: center;
+    color: #8b1515;
+    font-size: clamp(18px, 4.5vw, 25px);
+    font-weight: bold;
+    z-index: 7;
+    animation: textEntrance 1.5s ease both;
+}
+
+.invitation-title {
+    position: absolute;
+    top: 47%;
+    width: 100%;
+    text-align: center;
+    color: #9c5011;
+    font-size: clamp(32px, 9vw, 50px);
+    font-weight: 900;
+    animation: goldenGlow 2s infinite, floatText 3s infinite, textEntrance 1.4s ease both;
+    z-index: 7;
+}
+
+/* PAGE 2 PHOTOS */
+.prep-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.prep-subtitle {
+    position: absolute;
+    top: 26%;
+    left: 5%;
+    width: 90%;
+    padding: 0 2%;
+    text-align: center;
+    color: #8b250d;
+    font-size: clamp(17px, 4.5vw, 23px);
+    font-weight: 900;
+    z-index: 7;
+    animation: goldenGlow 3s infinite, textEntrance 1.4s ease both;
+}
+
+.photo-grid {
+    position: absolute;
+    top: 35%;
+    left: 22%;
+    width: 58%;
+    height: 38%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.photo-frame {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    overflow: hidden;
+    opacity: 0;
+    animation: photoReveal 1s cubic-bezier(.2,.8,.2,1) both,
+               photoFloat 4s ease-in-out infinite;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    transition: transform .7s ease, filter .7s ease;
+}
+
+.photo-frame:hover img {
+    transform: scale(1.06);
+    filter: brightness(1.12);
+}
+
+.photo-frame:nth-child(1) { animation-delay: .1s, 1.2s; }
+.photo-frame:nth-child(2) { animation-delay: .25s, 1.4s; }
+.photo-frame:nth-child(3) { animation-delay: .4s, 1.6s; }
+.photo-frame:nth-child(4) { animation-delay: .55s, 1.8s; }
+.photo-frame:nth-child(5) { animation-delay: .7s, 2s; }
+.photo-frame:nth-child(6) { animation-delay: .85s, 2.2s; }
+.photo-frame:nth-child(7) { animation-delay: 1s, 2.4s; }
+.photo-frame:nth-child(8) { animation-delay: 1.15s, 2.6s; }
+
+@keyframes photoReveal {
+    from { opacity: 0; scale: .82; }
+    to { opacity: 1; scale: 1; }
+}
+
+@keyframes photoFloat {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -3px; }
+}
+
+/* PAGE 3 POEM */
+.poem {
+    position: absolute;
+    top: 28%;
+    left: 10%;
+    width: 92%;
+    text-align: center;
+    color: #71251d;
+    font-size: clamp(17px, 4.2vw, 22px);
+    line-height: 1.95;
+    font-weight: 900;
+    z-index: 7;
+    animation: poemReveal 2s ease both;
+    text-shadow: 0 1px 3px #fff3d2, 0 0 8px #ffe3a0;
+}
+
+@keyframes poemReveal {
+    from { opacity: 0; translate: 0 25px; letter-spacing: 2px; }
+    to { opacity: 1; translate: 0 0; letter-spacing: 0; }
+}
+
+/* PAGE 4 FUNCTION THEME */
+.theme-main {
+    position: absolute;
+    top: 31%;
+    left: 7%;
+    width: 86%;
+    padding: 25px 8px;
+    text-align: center;
+    color: #842318;
+    font-size: clamp(35px, 8.5vw, 51px);
+    font-weight: 900;
+    line-height: 1.8;
+    border: 3px double #d89a29;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #fff1c966, #f4c65b55, #fff1c966);
+    box-shadow: 0 0 12px #ffdc78, inset 0 0 18px #ffe6a0;
+    animation: floatText 3s infinite, goldenGlow 2.5s infinite,
+               themeShine 4s infinite, textEntrance 1.4s ease both;
+    z-index: 7;
+}
+
+.theme-main::before,
+.theme-main::after {
+    content: "✦";
+    position: absolute;
+    color: #b87813;
+    font-size: 24px;
+}
+
+.theme-main::before { top: -15px; left: 15px; }
+.theme-main::after { bottom: -15px; right: 15px; }
+
+@keyframes themeShine {
+    0%, 100% { box-shadow: 0 0 12px #ffdc78, inset 0 0 18px #ffe6a0; }
+    50% { box-shadow: 0 0 28px #ffb900, inset 0 0 25px #fff0a5; }
+}
+
+.theme-line {
+    position: absolute;
+    top: 64%;
+    width: 100%;
+    text-align: center;
+    color: #70251b;
+    font-size: clamp(18px, 4.2vw, 25px);
+    font-weight: 900;
+    z-index: 7;
+    animation: poemReveal 2s ease both;
+}
+
+.theme-tagline {
+    position: absolute;
+    top: 70%;
+    left: 7%;
+    width: 86%;
+    text-align: center;
+    color: #70251b;
+    font-size: clamp(15px, 3.5vw, 20px);
+    font-weight: bold;
+    line-height: 1.7;
+    z-index: 7;
+    animation: textEntrance 1.6s ease both;
+}
+
+/* PAGE 5 EVENT DETAILS */
+.details-content {
+    position: absolute;
+    top: 25%;
+    left: 13%;
+    width: 75%;
+    text-align: center;
+    color: #70251b;
+    font-size: clamp(19px, 4.6vw, 26px);
+    font-weight: bold;
+    line-height: 1.6;
+    z-index: 7;
+    animation: textEntrance 1.8s ease both;
+}
+
+.detail-card {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    margin: 13px 0;
+    padding: 10px 8px;
+    border: 2px solid #d99b28;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #fff4cfdd, #ffe0a0cc);
+    box-shadow: 0 0 10px #f7c44b, inset 0 0 10px #fff5ca;
+    animation: cardGlow 3s ease-in-out infinite;
+}
+
+.detail-card::after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -60%;
+    width: 45%;
+    height: 300%;
+    background: linear-gradient(90deg, transparent, #ffffff88, transparent);
+    transform: rotate(25deg);
+    animation: cardShine 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.detail-card:nth-child(2)::after { animation-delay: 1s; }
+.detail-card:nth-child(3)::after { animation-delay: 2s; }
+
+@keyframes cardShine {
+    0%, 35% { left: -60%; }
+    75%, 100% { left: 130%; }
+}
+
+.detail-label {
+    display: block;
+    color: #a14b12;
+    font-size: .75em;
+    font-weight: 900;
+    margin-bottom: 3px;
+    text-shadow: 0 0 8px #ffe7a0;
+}
+
+.detail-value {
+    display: block;
+    color: #6f1e18;
+    font-weight: 900;
+}
+
+@keyframes cardGlow {
+    0%, 100% { box-shadow: 0 0 8px #f7c44b, inset 0 0 8px #fff5ca; }
+    50% { box-shadow: 0 0 20px #ffbd39, inset 0 0 15px #fff5ca; }
+}
+
+/* MAP BUTTON */
+.map-link {
+    display: block;
+    width: fit-content;
+    margin: 12px auto;
+    padding: 9px 18px;
+    background: #8b250d;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    animation: mapPulse 2s ease-in-out infinite;
+    transition: transform .3s ease;
+}
+
+.map-link:hover { transform: scale(1.06); }
+.map-link:active { transform: scale(.95); }
+
+@keyframes mapPulse {
+    0%, 100% { box-shadow: 0 0 8px #ffb62e; }
+    50% { box-shadow: 0 0 22px #fff0a0, 0 0 32px #ff9c21; }
+}
+
+.host {
+    position: absolute;
+    left: 5%;
+    bottom: 10%;
+    width: 90%;
+    text-align: center;
+    color: #842318;
+    font-size: clamp(22px, 5vw, 30px);
+    font-weight: 900;
+    line-height: 1.7;
+    animation: goldenGlow 2.5s infinite, floatText 3s infinite,
+               textEntrance 1.5s ease both;
+    z-index: 7;
+}
+
+/* NAVIGATION */
+.navigation {
+    width: min(100%, 480px);
+    margin: 0 auto 20px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.navigation button {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #fff0b0;
+    background: linear-gradient(135deg, #fff0b0, #ffce62, #d38b1b);
+    color: #4b2009;
+    padding: 11px 14px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 900;
+    box-shadow: 0 0 12px #ffce55, 0 0 25px #d88c1c66;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.navigation button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #ffffffaa, transparent);
+    transform: skewX(-25deg);
+    animation: buttonShine 4s infinite;
+}
+
+@keyframes buttonShine {
+    0%, 65% { left: -120%; }
+    100% { left: 150%; }
+}
+
+.navigation button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px #fff0a0;
+}
+
+.navigation button:active { transform: scale(.94); }
+
+#pageNumber {
+    color: #ffe5a0;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+    text-shadow: 0 0 8px #ffc13a;
+}
+
+/* RESPONSIVE */
+@media (min-width: 481px) {
+    .book-page { width: min(100%, 480px); }
+}
+
+@media (max-width: 350px) {
+    .poem {
+        top: 24%;
+        font-size: 14px;
+        line-height: 1.85;
+    }
+
+    .photo-grid {
+        height: 38%;
+    }
+
+    .navigation button { padding: 9px 10px; font-size: 12px; }
+    .details-content { top: 17%; }
+    .detail-card { margin: 9px 0; padding: 8px 5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<section class="book-page active" id="page1">
+    <img src="photos/first.png" class="background" alt="">
+    <div class="page-overlay"></div>
+    <div class="light-sweep"></div>
+
+    <span class="particle p1">✦</span>
+    <span class="particle p2">✧</span>
+    <span class="particle p3">✦</span>
+    <span class="particle p4">✧</span>
+    <span class="particle p5">✦</span>
+    <span class="particle p6">✧</span>
+
+    <span class="petal petal-a">✿</span>
+    <span class="petal petal-b">✿</span>
+    <span class="petal petal-c">✿</span>
+    <span class="petal petal-d">✿</span>
+
+    <span class="firework one"></span>
+    <span class="firework two"></span>
+
+    <span class="diya left">🪔</span>
+    <span class="diya right">🪔</span>
+</section>
+
+<!-- PAGE 2 -->
+<section class="book-page" id="page2">
+    <img src="photos/second.png" class="background" alt="">
+    <div class="page-overlay"></div>
+    <div class="light-sweep"></div>
+
+    <span class="particle p1">✦</span>
+    <span class="particle p2">✧</span>
+    <span class="particle p3">✦</span>
+    <span class="particle p4">✧</span>
+    <span class="particle p5">✦</span>
+    <span class="particle p6">✧</span>
+
+    <span class="petal petal-a">✿</span>
+    <span class="petal petal-b">✿</span>
+    <span class="petal petal-c">✿</span>
+    <span class="petal petal-d">✿</span>
+
+    <span class="firework one"></span>
+    <span class="firework two"></span>
+
+    <div class="prep-section">
+        <div class="prep-subtitle">
+            नन्हे हाथों से सजी खुशियों <br>की दुनिया
+        </div>
+
+        <div class="photo-grid">
+            <div class="photo-frame"><img src="photos/photo1.jpg" alt="Photo 1"></div>
+            <div class="photo-frame"><img src="photos/photo2.jpg" alt="Photo 2"></div>
+            <div class="photo-frame"><img src="photos/photo3.jpg" alt="Photo 3"></div>
+            <div class="photo-frame"><img src="photos/photo4.jpg" alt="Photo 4"></div>
+            <div class="photo-frame"><img src="photos/photo5.jpg" alt="Photo 5"></div>
+            <div class="photo-frame"><img src="photos/photo6.jpg" alt="Photo 6"></div>
+            <div class="photo-frame"><img src="photos/photo7.jpg" alt="Photo 7"></div>
+            <div class="photo-frame"><img src="photos/photo8.jpg" alt="Photo 8"></div>
+        </div>
+    </div>
+
+    <span class="diya left">🪔</span>
+    <span class="diya right">🪔</span>
+</section>
+
+<!-- PAGE 3 -->
+<section class="book-page" id="page3">
+    <img src="photos/third.png" class="background" alt="">
+    <div class="page-overlay"></div>
+    <div class="light-sweep"></div>
+
+    <span class="particle p1">✦</span>
+    <span class="particle p2">✧</span>
+    <span class="particle p3">✦</span>
+    <span class="particle p4">✧</span>
+    <span class="particle p5">✦</span>
+    <span class="particle p6">✧</span>
+
+    <span class="petal petal-a">✿</span>
+    <span class="petal petal-b">✿</span>
+    <span class="petal petal-c">✿</span>
+    <span class="petal petal-d">✿</span>
+
+    <span class="firework one"></span>
+    <span class="firework two"></span>
+
+    <div class="poem">
+        दीपावली के पावन पर्व पर ,<br>
+        आइए,कुछ पल साथ बिताएं।<br>
+        मनमोहक उत्सव - प्रस्तुति पर<br>
+        मुस्कान की फुलझड़ी सजाएं।<br>
+        अपने बच्चों के हर रंगों पर<br>
+        भावों के अबीर गुलाल लगाएं।<br>
+        स्नेह के धागों में गीत पिरोकर<br>
+        आस्था में विनम्र शीश झुकाएं।<br>
+        आइये,आप और हम मिलकर<br>
+        उल्लास- उमंग में भीग जाएं....
+    </div>
+
+    <span class="diya left">🪔</span>
+    <span class="diya right">🪔</span>
+</section>
+
+<!-- PAGE 4 -->
+<section class="book-page" id="page4">
+    <img src="photos/fourth.png" class="background" alt="">
+    <div class="page-overlay"></div>
+    <div class="light-sweep"></div>
+
+    <span class="particle p1">✦</span>
+    <span class="particle p2">✧</span>
+    <span class="particle p3">✦</span>
+    <span class="particle p4">✧</span>
+    <span class="particle p5">✦</span>
+    <span class="particle p6">✧</span>
+
+    <span class="petal petal-a">✿</span>
+    <span class="petal petal-b">✿</span>
+    <span class="petal petal-c">✿</span>
+    <span class="petal petal-d">✿</span>
+
+    <span class="firework one"></span>
+    <span class="firework two"></span>
+    <span class="firework three"></span>
+
+    <div class="theme-main">
+        उल्लास - उमंग<br>
+        आप - हम ॥
+    </div>
+
+    <div class="theme-line">
+        (हर उत्सव कुछ कहता है...)
+    </div>
+
+    <div class="theme-tagline">
+        आइए, <br>खुशियों के इस उत्सव को मिलकर मनाएं।
+    </div>
+
+    <span class="diya left">🪔</span>
+    <span class="diya right">🪔</span>
+</section>
+
+<!-- PAGE 5 -->
+<section class="book-page" id="page5">
+    <img src="photos/fifth.png" class="background" alt="">
+    <div class="page-overlay"></div>
+    <div class="light-sweep"></div>
+
+    <span class="particle p1">✦</span>
+    <span class="particle p2">✧</span>
+    <span class="particle p3">✦</span>
+    <span class="particle p4">✧</span>
+    <span class="particle p5">✦</span>
+    <span class="particle p6">✧</span>
+
+    <span class="petal petal-a">✿</span>
+    <span class="petal petal-b">✿</span>
+    <span class="petal petal-c">✿</span>
+    <span class="petal petal-d">✿</span>
+
+    <span class="firework one"></span>
+    <span class="firework two"></span>
+
+    <div class="details-content">
+        <div class="detail-card">
+            <span class="detail-label">✦ दिनांक ✦</span>
+            <span class="detail-value">6 नवंबर, 2026</span>
+        </div>
+
+        <div class="detail-card">
+            <span class="detail-label">✦ शुभ समय ✦</span>
+            <span class="detail-value">10:30 a.m.</span>
+        </div>
+
+        <div class="detail-card">
+            <span class="detail-label">✦ आयोजन स्थल ✦</span>
+            <span class="detail-value">
+                दीक्षा पब्लिक स्कूल,<br>
+                सेक्टर 91, फरीदाबाद
+            </span>
+        </div>
+
+        <a class="map-link"
+           href="https://www.google.com/maps/search/?api=1&query=28.47946038116353,77.33184703773287"
+           target="_blank"
+           rel="noopener">
+            📍 View Location on Google Maps
+        </a>
+    </div>
+
+    <div class="host">
+        निवेदक<br>
+        दीक्षा परिवार 🙏🏼
+    </div>
+
+    <span class="diya left">🪔</span>
+    <span class="diya right">🪔</span>
+</section>
+
+<!-- NAVIGATION -->
+<div class="navigation">
+    <button id="previousButton" onclick="previousPage()">❮ पिछला</button>
+    <span id="pageNumber">Page 1 / 5</span>
+    <button id="nextButton" onclick="nextPage()">अगला ❯</button>
+</div>
+
+<script>
+let currentPage = 1;
+const totalPages = 5;
+
+function showPage(page) {
+    if (page < 1 || page > totalPages) return;
+
+    currentPage = page;
+
+    document.querySelectorAll(".book-page").forEach(function(section) {
+        section.classList.remove("active");
+    });
+
+    const selectedPage = document.getElementById("page" + page);
+    selectedPage.classList.add("active");
+
+    document.getElementById("pageNumber").textContent =
+        "Page " + page + " / " + totalPages;
+
+    updateNavigation();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+function updateNavigation() {
+    const nextButton = document.getElementById("nextButton");
+
+    if (currentPage === totalPages) {
+        nextButton.textContent = "फिर से देखें ↻";
+    } else {
+        nextButton.textContent = "अगला ❯";
+    }
+}
+
+function nextPage() {
+    if (currentPage < totalPages) {
+        showPage(currentPage + 1);
+    } else {
+        showPage(1);
+    }
+}
+
+function previousPage() {
+    if (currentPage > 1) {
+        showPage(currentPage - 1);
+    }
+}
+
+/* MOBILE SWIPE */
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener("touchstart", function(event) {
+    touchStartX = event.changedTouches[0].screenX;
+}, { passive: true });
+
+document.addEventListener("touchend", function(event) {
+    touchEndX = event.changedTouches[0].screenX;
+
+    const difference = touchStartX - touchEndX;
+
+    if (Math.abs(difference) > 65) {
+        if (difference > 0) {
+            nextPage();
+        } else {
+            previousPage();
+        }
+    }
+}, { passive: true });
+
+updateNavigation();
+</script>
+
+</body>
+</html>
+'''
+
+path = Path("/mnt/data/diwali_invitation_animated.html")
+path.write_text(html, encoding="utf-8")
+print(f"Created: {path}")
