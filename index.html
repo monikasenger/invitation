@@ -113,25 +113,6 @@ body::after {
     50% { transform: translateY(-35px) rotate(180deg) scale(1.4); opacity: 1; }
 }
 
-/* OUTSIDE DIYAS */
-
-.outer-diya {
-    position: fixed;
-    bottom: 15px;
-    font-size: 27px;
-    z-index: -1;
-    pointer-events: none;
-    filter: drop-shadow(0 0 10px #ffb51e);
-    animation: outerDiya 2.5s ease-in-out infinite alternate;
-}
-
-.outer-diya.left { left: 15px; }
-.outer-diya.right { right: 15px; animation-delay: 1s; }
-
-@keyframes outerDiya {
-    from { transform: translateY(0) scale(.9); filter: drop-shadow(0 0 5px #ff9d00); }
-    to { transform: translateY(-10px) scale(1.1); filter: drop-shadow(0 0 18px #ffdf55); }
-}
 
 /* RESPONSIVE PAGE DESIGN */
 
@@ -426,7 +407,7 @@ body::after {
 .poem {
     position: absolute;
     top: 28%;
-    left: 10%;
+    left: 2%;
     width: 92%;
     text-align: center;
     color: #71251d;
@@ -756,8 +737,7 @@ body::after {
     <span class="outer-particle">✧</span>
 </div>
 
-<div class="outer-diya left">🪔</div>
-<div class="outer-diya right">🪔</div>
+
 
 <!-- BACKGROUND MUSIC -->
 <audio id="pageMusic" src="./song.mp3" loop preload="auto" playsinline></audio>
@@ -784,7 +764,8 @@ body::after {
     <span class="firework one"></span>
     <span class="firework two"></span>
 
-  
+    <span class="diya left">🪔</span>
+    <span class="diya right">🪔</span>
 
     <div class="navigation">
         <button class="nav-button" onclick="nextPage()">खोलें ✨</button>
@@ -830,7 +811,8 @@ body::after {
         </div>
     </div>
 
-   
+    <span class="diya left">🪔</span>
+    <span class="diya right">🪔</span>
 
     <div class="navigation">
         <button class="nav-button" onclick="nextPage()">अगला पृष्ठ ❯</button>
@@ -874,7 +856,8 @@ body::after {
         </b>
     </div>
 
- 
+    <span class="diya left">🪔</span>
+    <span class="diya right">🪔</span>
 
     <div class="navigation">
         <button class="nav-button" onclick="nextPage()">अगला पृष्ठ ❯</button>
@@ -917,7 +900,8 @@ body::after {
         आइए, <br>खुशियों के इस उत्सव को मिलकर मनाएं।
     </div>
 
-    
+    <span class="diya left">🪔</span>
+    <span class="diya right">🪔</span>
 
     <div class="navigation">
         <button class="nav-button" onclick="nextPage()">अगला पृष्ठ ❯</button>
@@ -975,7 +959,8 @@ body::after {
 
     </div>
 
-    
+    <span class="diya left">🪔</span>
+    <span class="diya right">🪔</span>
 
     <div class="navigation">
         <button class="nav-button" onclick="restartInvitation()">फिर से देखें ↻</button>
