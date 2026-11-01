@@ -20,14 +20,164 @@
     --cream: #fff1c9;
 }
 
+html {
+    min-height: 100%;
+    background: #0b0716;
+}
+
 body {
     min-height: 100vh;
-    background: radial-gradient(ellipse at top, #55234e 0%, #24102f 45%, #0b0716 100%);
+    background:
+        radial-gradient(ellipse at 50% 0%, #55234e 0%, #24102f 42%, #0b0716 100%);
     font-family: "Noto Sans Devanagari", "Mangal", sans-serif;
     color: white;
     overflow-x: hidden;
-    padding-bottom: 15px;
+    padding: 12px 0 90px;
+    position: relative;
 }
+
+/* OUTSIDE BACKGROUND ANIMATION */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -2;
+}
+
+body::before {
+    background:
+        radial-gradient(circle at 15% 20%, #ffca5522 0 2px, transparent 4px),
+        radial-gradient(circle at 80% 35%, #ffdd7733 0 2px, transparent 5px),
+        radial-gradient(circle at 45% 75%, #ff9e3322 0 3px, transparent 6px),
+        radial-gradient(circle at 90% 85%, #ffe7a033 0 2px, transparent 5px);
+    background-size: 180px 180px, 230px 230px, 200px 200px, 260px 260px;
+    animation: backgroundSparkle 8s linear infinite;
+}
+
+body::after {
+    background:
+        radial-gradient(ellipse at 10% 50%, #e69a2720, transparent 35%),
+        radial-gradient(ellipse at 90% 20%, #a12c5a22, transparent 35%),
+        radial-gradient(ellipse at 50% 100%, #e5a52b18, transparent 40%);
+    animation: backgroundGlow 7s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundSparkle {
+    0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+    100% { background-position: 180px 180px, -230px 230px, 200px -200px, -260px -260px; }
+}
+
+@keyframes backgroundGlow {
+    from { opacity: .45; }
+    to { opacity: 1; }
+}
+
+/* FLOATING GOLDEN PARTICLES OUTSIDE PAGE */
+
+.outer-particles {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.outer-particle {
+    position: absolute;
+    color: #ffdc83;
+    text-shadow: 0 0 8px #ffc13a, 0 0 18px #ff9d1a;
+    animation: outerFloat 7s ease-in-out infinite;
+    opacity: .8;
+}
+
+.outer-particle:nth-child(1) {
+    left: 5%;
+    top: 15%;
+    font-size: 20px;
+}
+
+.outer-particle:nth-child(2) {
+    left: 90%;
+    top: 25%;
+    font-size: 16px;
+    animation-delay: 1s;
+}
+
+.outer-particle:nth-child(3) {
+    left: 8%;
+    top: 70%;
+    font-size: 18px;
+    animation-delay: 2s;
+}
+
+.outer-particle:nth-child(4) {
+    left: 88%;
+    top: 78%;
+    font-size: 23px;
+    animation-delay: 3s;
+}
+
+.outer-particle:nth-child(5) {
+    left: 50%;
+    top: 8%;
+    font-size: 14px;
+    animation-delay: 1.5s;
+}
+
+.outer-particle:nth-child(6) {
+    left: 48%;
+    top: 90%;
+    font-size: 18px;
+    animation-delay: 2.5s;
+}
+
+@keyframes outerFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg) scale(.7);
+        opacity: .25;
+    }
+    50% {
+        transform: translateY(-35px) rotate(180deg) scale(1.4);
+        opacity: 1;
+    }
+}
+
+/* OUTSIDE DIWALI LIGHTS */
+
+.outer-diya {
+    position: fixed;
+    bottom: 15px;
+    font-size: 27px;
+    z-index: -1;
+    pointer-events: none;
+    filter: drop-shadow(0 0 10px #ffb51e);
+    animation: outerDiya 2.5s ease-in-out infinite alternate;
+}
+
+.outer-diya.left {
+    left: 15px;
+}
+
+.outer-diya.right {
+    right: 15px;
+    animation-delay: 1s;
+}
+
+@keyframes outerDiya {
+    from {
+        transform: translateY(0) scale(.9);
+        filter: drop-shadow(0 0 5px #ff9d00);
+    }
+    to {
+        transform: translateY(-10px) scale(1.1);
+        filter: drop-shadow(0 0 18px #ffdf55);
+    }
+}
+
+/* PAGE DESIGN */
 
 .book-page {
     display: none;
@@ -110,7 +260,7 @@ body {
     to { opacity: 1; transform: perspective(1000px) rotateY(0) scale(1); }
 }
 
-/* TWINKLING STARS */
+/* STARS */
 
 .particle {
     position: absolute;
@@ -223,46 +373,6 @@ body {
 @keyframes textEntrance {
     0% { opacity: 0; translate: 0 25px; scale: .94; }
     100% { opacity: 1; translate: 0 0; scale: 1; }
-}
-
-/* PAGE 1 */
-
-.school-title {
-    position: absolute;
-    top: 13%;
-    left: 5%;
-    width: 90%;
-    text-align: center;
-    color: #8b1515;
-    font-size: clamp(22px, 6vw, 34px);
-    font-weight: 900;
-    z-index: 7;
-    animation: goldenGlow 2.5s infinite, textEntrance 1.4s ease both;
-}
-
-.school-sector {
-    position: absolute;
-    top: 20%;
-    left: 5%;
-    width: 90%;
-    text-align: center;
-    color: #8b1515;
-    font-size: clamp(18px, 4.5vw, 25px);
-    font-weight: bold;
-    z-index: 7;
-    animation: textEntrance 1.5s ease both;
-}
-
-.invitation-title {
-    position: absolute;
-    top: 47%;
-    width: 100%;
-    text-align: center;
-    color: #9c5011;
-    font-size: clamp(32px, 9vw, 50px);
-    font-weight: 900;
-    animation: goldenGlow 2s infinite, floatText 3s infinite, textEntrance 1.4s ease both;
-    z-index: 7;
 }
 
 /* PAGE 2 */
@@ -518,7 +628,6 @@ body {
     margin: 12px auto;
     padding: 9px 18px;
     background: #8b250d;
-top:20%;
     color: #fff;
     text-decoration: none;
     border-radius: 20px;
@@ -536,68 +645,40 @@ top:20%;
     50% { box-shadow: 0 0 22px #fff0a0, 0 0 32px #ff9c21; }
 }
 
-.host {
-    position: absolute;
-    left: 5%;
-    bottom: 10%;
-    width: 90%;
-    text-align: center;
-    color: #842318;
-    font-size: clamp(22px, 5vw, 30px);
-    font-weight: 900;
-    line-height: 1.7;
-    animation: goldenGlow 2.5s infinite, floatText 3s infinite,
-               textEntrance 1.5s ease both;
-    z-index: 7;
-}
-
-/* MUSIC BUTTON */
-
-.music-button {
-    display: block;
-    position: fixed;
-    bottom: 20px;
-    right: 15px;
-    z-index: 100;
-    border: 2px solid #fff0b0;
-    border-radius: 30px;
-    padding: 11px 17px;
-    background: linear-gradient(135deg, #fff0b0, #ffce62, #d38b1b);
-    color: #4b2009;
-    font-size: 14px;
-    font-weight: 900;
-    box-shadow: 0 0 12px #ffce55, 0 0 25px #d88c1c66;
-    cursor: pointer;
-}
-
-/* NAVIGATION */
+/* NAVIGATION BUTTON AT BOTTOM */
 
 .navigation {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     width: min(100%, 480px);
-    margin: 0 auto 20px;
-    padding: 12px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    gap: 8px;
+    z-index: 100;
+    pointer-events: none;
+    padding: 0 12px;
 }
 
-.navigation button {
+.nav-button {
     position: relative;
     overflow: hidden;
-    border: 1px solid #fff0b0;
+    pointer-events: auto;
+    border: 2px solid #ffe5a0;
+    border-radius: 30px;
+    padding: 13px 32px;
     background: linear-gradient(135deg, #fff0b0, #ffce62, #d38b1b);
     color: #4b2009;
-    padding: 11px 14px;
-    border-radius: 30px;
-    font-size: 14px;
+    font-size: 17px;
+    font-family: "Noto Sans Devanagari", "Mangal", sans-serif;
     font-weight: 900;
-    box-shadow: 0 0 12px #ffce55, 0 0 25px #d88c1c66;
     cursor: pointer;
-    transition: transform .2s ease, box-shadow .2s ease;
+    box-shadow: 0 0 12px #ffce55, 0 0 25px #d88c1c66;
+    animation: navGlow 2s ease-in-out infinite alternate;
 }
 
-.navigation button::after {
+.nav-button::after {
     content: "";
     position: absolute;
     top: 0;
@@ -614,19 +695,17 @@ top:20%;
     100% { left: 150%; }
 }
 
-.navigation button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 20px #fff0a0;
+@keyframes navGlow {
+    from { box-shadow: 0 0 8px #ffce55, 0 0 15px #d88c1c66; }
+    to { box-shadow: 0 0 18px #fff0a0, 0 0 30px #ff9c21; }
 }
 
-.navigation button:active { transform: scale(.94); }
+.nav-button:hover {
+    transform: translateY(-3px);
+}
 
-#pageNumber {
-    color: #ffe5a0;
-    font-size: 14px;
-    font-weight: bold;
-    white-space: nowrap;
-    text-shadow: 0 0 8px #ffc13a;
+.nav-button:active {
+    transform: scale(.94);
 }
 
 /* RESPONSIVE */
@@ -644,9 +723,9 @@ top:20%;
 
     .photo-grid { height: 38%; }
 
-    .navigation button {
-        padding: 9px 10px;
-        font-size: 12px;
+    .nav-button {
+        padding: 11px 26px;
+        font-size: 15px;
     }
 
     .details-content { top: 17%; }
@@ -665,14 +744,23 @@ top:20%;
 
 <body>
 
+<!-- OUTSIDE BACKGROUND DECORATIONS -->
+<div class="outer-particles">
+    <span class="outer-particle">✦</span>
+    <span class="outer-particle">✧</span>
+    <span class="outer-particle">✦</span>
+    <span class="outer-particle">✧</span>
+    <span class="outer-particle">✦</span>
+    <span class="outer-particle">✧</span>
+</div>
+
+<div class="outer-diya left">🪔</div>
+<div class="outer-diya right">🪔</div>
+
 <!-- BACKGROUND MUSIC -->
-<audio id="pageMusic" autoplay loop preload="auto">
+<audio id="pageMusic" autoplay loop preload="auto" playsinline>
     <source src="song/song.mp3" type="audio/mpeg">
 </audio>
-
-<button class="music-button" id="musicButton" onclick="toggleMusic()">
-    🎵 Play Music
-</button>
 
 <!-- PAGE 1 -->
 <section class="book-page active" id="page1">
@@ -763,7 +851,8 @@ top:20%;
     <span class="firework two"></span>
 
     <div class="poem">
-      <b>  दीपावली के पावन पर्व पर ,<br>
+        <b>
+        दीपावली के पावन पर्व पर ,<br>
         आइए,कुछ पल साथ बिताएं।<br>
         मनमोहक उत्सव - प्रस्तुति पर<br>
         मुस्कान की फुलझड़ी सजाएं।<br>
@@ -772,7 +861,8 @@ top:20%;
         स्नेह के धागों में गीत पिरोकर<br>
         आस्था में विनम्र शीश झुकाएं।<br>
         आइये,आप और हम मिलकर<br>
-        उल्लास- उमंग में भीग जाएं....</b>
+        उल्लास- उमंग में भीग जाएं....
+        </b>
     </div>
 
     <span class="diya left">🪔</span>
@@ -868,17 +958,15 @@ top:20%;
 
     </div>
 
-    
-
     <span class="diya left">🪔</span>
     <span class="diya right">🪔</span>
 </section>
 
-<!-- NAVIGATION -->
+<!-- BOTTOM NAVIGATION BUTTON -->
 <div class="navigation">
-    <button id="previousButton" onclick="previousPage()">❮ पिछला</button>
-    <span id="pageNumber">Page 1 / 5</span>
-    <button id="nextButton" onclick="nextPage()">अगला ❯</button>
+    <button class="nav-button" id="nextButton" onclick="nextPage()">
+        खोलें
+    </button>
 </div>
 
 <script>
@@ -886,49 +974,34 @@ let currentPage = 1;
 const totalPages = 5;
 
 const music = document.getElementById("pageMusic");
-const musicButton = document.getElementById("musicButton");
+const nextButton = document.getElementById("nextButton");
 
-/* MUSIC PLAYBACK */
+/* BACKGROUND MUSIC */
 
-function updateMusicButton() {
-    musicButton.textContent = music.paused
-        ? "🎵 Play Music"
-        : "🔊 Music On";
-}
+music.volume = 1;
 
 function startMusic() {
-    music.play()
-        .then(() => {
-            updateMusicButton();
-        })
-        .catch(() => {
-            updateMusicButton();
-        });
+    music.play().catch(function() {
+        // Browser autoplay block kar sakta hai.
+        // Pehli user interaction par dobara try hoga.
+    });
 }
 
-function toggleMusic() {
-    if (music.paused) {
-        startMusic();
-    } else {
-        music.pause();
-        updateMusicButton();
-    }
-}
-
-/* Try autoplay when website opens */
 window.addEventListener("load", function() {
     startMusic();
 });
 
-/* Try again after the first user interaction if autoplay was blocked */
-document.addEventListener("click", function() {
+document.addEventListener("pointerdown", function() {
     if (music.paused) {
         startMusic();
     }
 }, { once: true });
 
-music.addEventListener("play", updateMusicButton);
-music.addEventListener("pause", updateMusicButton);
+document.addEventListener("keydown", function() {
+    if (music.paused) {
+        startMusic();
+    }
+}, { once: true });
 
 /* PAGE NAVIGATION */
 
@@ -944,25 +1017,25 @@ function showPage(page) {
     const selectedPage = document.getElementById("page" + page);
     selectedPage.classList.add("active");
 
-    document.getElementById("pageNumber").textContent =
-        "Page " + page + " / " + totalPages;
-
     updateNavigation();
 
-    /* Music continues while changing pages */
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
+
+    // Music page change par continue rahega.
 }
 
 function updateNavigation() {
-    const nextButton = document.getElementById("nextButton");
-
-    if (currentPage === totalPages) {
+    if (currentPage === 1) {
+        nextButton.textContent = "खोलें";
+    }
+    else if (currentPage === totalPages) {
         nextButton.textContent = "फिर से देखें ↻";
-    } else {
-        nextButton.textContent = "अगला ❯";
+    }
+    else {
+        nextButton.textContent = "अगला पृष्ठ ❯";
     }
 }
 
@@ -974,13 +1047,7 @@ function nextPage() {
     }
 }
 
-function previousPage() {
-    if (currentPage > 1) {
-        showPage(currentPage - 1);
-    }
-}
-
-/* MOBILE SWIPE */
+/* MOBILE SWIPE - ONLY NEXT PAGE */
 
 let touchStartX = 0;
 let touchEndX = 0;
@@ -994,16 +1061,22 @@ document.addEventListener("touchend", function(event) {
 
     const difference = touchStartX - touchEndX;
 
-    if (Math.abs(difference) > 65) {
-        if (difference > 0) {
-            nextPage();
-        } else {
-            previousPage();
-        }
+    if (Math.abs(difference) > 65 && difference > 0) {
+        nextPage();
     }
 }, { passive: true });
 
+/* KEYBOARD - RIGHT ARROW */
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "ArrowRight") {
+        nextPage();
+    }
+});
+
+/* INITIAL BUTTON */
 updateNavigation();
+
 </script>
 
 </body>
