@@ -3,7 +3,7 @@
 <html lang="hi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#0b0716">
 <title>Diwali Invitation | Deeksha Public School</title>
@@ -13,10 +13,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 :root {
-    color-scheme: light;
+    color-scheme: only light;
     --gold: #ffda75;
     --deep-gold: #d99b28;
     --maroon: #7b1c19;
@@ -26,7 +27,8 @@
 html {
     min-height: 100%;
     background: #0b0716;
-    color-scheme: light;
+    color-scheme: only light;
+    forced-color-adjust: none;
 }
 
 body {
@@ -39,7 +41,7 @@ body {
     padding: 12px 0 20px;
     position: relative;
     isolation: isolate;
-    color-scheme: light;
+    color-scheme: only light;
 }
 
 /* OUTSIDE BACKGROUND ANIMATION */
@@ -81,7 +83,7 @@ body::after {
     to { opacity: 1; }
 }
 
-/* FLOATING GOLDEN PARTICLES */
+/* FLOATING PARTICLES */
 
 .outer-particles {
     position: fixed;
@@ -131,15 +133,24 @@ body::after {
     to { transform: translateY(-10px) scale(1.1); filter: drop-shadow(0 0 18px #ffdf55); }
 }
 
-/* PAGE DESIGN */
+/* RESPONSIVE PAGE DESIGN */
 
 .book-page {
     display: none;
     position: relative;
-    width: min(100vw, 480px);
-    height: min(177.78vw, 853px);
-    max-height: calc(100dvh - 24px);
-    min-height: 480px;
+
+    /* 9:16 page, automatically fits phone width and height */
+    width: min(
+        calc(100vw - 16px),
+        480px,
+        calc((100dvh - 24px) * 0.5625)
+    );
+
+    aspect-ratio: 9 / 16;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+
     margin: 12px auto;
     overflow: hidden;
     border: 2px solid var(--gold);
@@ -147,6 +158,9 @@ body::after {
     box-shadow: 0 0 10px #ffdf83, 0 0 25px #e7a62b99, 0 0 65px #b65b1c55;
     isolation: isolate;
     background: #3a1520;
+    color-scheme: only light;
+    forced-color-adjust: none;
+    container-type: inline-size;
 }
 
 .book-page::before {
@@ -294,7 +308,7 @@ body::after {
     position: absolute;
     bottom: 4%;
     z-index: 6;
-    font-size: clamp(24px, 7vw, 35px);
+    font-size: clamp(22px, 7cqw, 35px);
     filter: drop-shadow(0 0 7px #ffb51e);
     animation: diyaFloat 3s ease-in-out infinite, diyaGlow 2s ease-in-out infinite alternate;
     pointer-events: none;
@@ -346,7 +360,7 @@ body::after {
     padding: 0 2%;
     text-align: center;
     color: #8b250d;
-    font-size: clamp(17px, 4.5vw, 23px);
+    font-size: clamp(15px, 4.8cqw, 23px);
     font-weight: 900;
     z-index: 7;
     animation: goldenGlow 3s infinite, textEntrance 1.4s ease both;
@@ -416,8 +430,8 @@ body::after {
     width: 92%;
     text-align: center;
     color: #71251d;
-    font-size: clamp(16px, 4.2vw, 22px);
-    line-height: 1.95;
+    font-size: clamp(12px, 4.2cqw, 22px);
+    line-height: 1.85;
     font-weight: bold;
     z-index: 7;
     animation: poemReveal 2s ease both;
@@ -439,7 +453,7 @@ body::after {
     padding: 25px 8px;
     text-align: center;
     color: #842318;
-    font-size: clamp(35px, 8.5vw, 51px);
+    font-size: clamp(27px, 9cqw, 51px);
     font-weight: 900;
     line-height: 1.8;
     border: 3px double #d89a29;
@@ -472,7 +486,7 @@ body::after {
     width: 100%;
     text-align: center;
     color: #70251b;
-    font-size: clamp(18px, 4.2vw, 25px);
+    font-size: clamp(15px, 4.5cqw, 25px);
     font-weight: 900;
     z-index: 7;
     text-shadow: 0 1px 3px #fff3d2, 0 0 8px #ffe3a0;
@@ -486,7 +500,7 @@ body::after {
     width: 86%;
     text-align: center;
     color: #70251b;
-    font-size: clamp(15px, 3.5vw, 20px);
+    font-size: clamp(13px, 3.8cqw, 20px);
     font-weight: bold;
     line-height: 1.7;
     z-index: 7;
@@ -499,11 +513,11 @@ body::after {
 .details-content {
     position: absolute;
     top: 25%;
-    left: 10%;
-    width: 80%;
+    left: 8%;
+    width: 84%;
     text-align: center;
     color: #70251b;
-    font-size: clamp(17px, 4.6vw, 26px);
+    font-size: clamp(14px, 4.8cqw, 26px);
     font-weight: bold;
     line-height: 1.6;
     z-index: 7;
@@ -514,8 +528,8 @@ body::after {
     display: block;
     position: relative;
     overflow: hidden;
-    margin: 13px 0;
-    padding: 10px 8px;
+    margin: 2.5cqw 0;
+    padding: 2cqw 1.5cqw;
     border: 2px solid #d99b28;
     border-radius: 16px;
     background: linear-gradient(135deg, #fff4cfee, #ffe0a0ee);
@@ -571,14 +585,14 @@ body::after {
     display: block;
     width: fit-content;
     max-width: 100%;
-    margin: 12px auto;
-    padding: 9px 18px;
+    margin: 2.5cqw auto;
+    padding: 2.2cqw 4cqw;
     background: #8b250d;
-    color: #ffffff;
+    color: #ffffff !important;
     text-decoration: none;
     border-radius: 20px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: clamp(11px, 3.2cqw, 14px);
     animation: mapPulse 2s ease-in-out infinite;
     transition: transform .3s ease;
 }
@@ -591,11 +605,11 @@ body::after {
     50% { box-shadow: 0 0 22px #fff0a0, 0 0 32px #ff9c21; }
 }
 
-/* NAVIGATION BUTTON INSIDE EACH PAGE */
+/* NAVIGATION BUTTON */
 
 .navigation {
     position: absolute;
-    bottom: 12px;
+    bottom: 2.5%;
     left: 0;
     width: 100%;
     display: flex;
@@ -612,17 +626,16 @@ body::after {
     pointer-events: auto;
     border: 2px solid #ffe5a0;
     border-radius: 30px;
-    padding: 12px 32px;
-    min-width: 155px;
+    padding: 2.5cqw 6cqw;
+    min-width: 0;
     background: linear-gradient(135deg, #fff0b0, #ffce62, #d38b1b);
-    color: #4b2009;
-    font-size: 17px;
+    color: #4b2009 !important;
+    font-size: clamp(13px, 4cqw, 17px);
     font-family: "Noto Sans Devanagari", "Mangal", sans-serif;
     font-weight: 900;
     cursor: pointer;
     box-shadow: 0 0 12px #ffce55, 0 0 25px #d88c1c66;
     animation: navGlow 2s ease-in-out infinite alternate;
-    -webkit-tap-highlight-color: transparent;
 }
 
 .nav-button::after {
@@ -651,72 +664,17 @@ body::after {
     transform: scale(.94);
 }
 
-/* PHONE RESPONSIVE */
+/* SMALL PHONES */
 
-@media (max-width: 480px) {
-    body {
-        padding: 8px 0;
-    }
-
-    .book-page {
-        width: calc(100vw - 16px);
-        height: min(calc((100vw - 16px) * 1.7778), calc(100dvh - 16px));
-        min-height: 0;
-        margin: 8px auto;
-        border-radius: 14px;
-    }
-
-    .navigation {
-        bottom: 9px;
-    }
-
-    .nav-button {
-        padding: 11px 28px;
-        font-size: 16px;
-    }
-
-    .poem {
-        top: 25%;
-        font-size: clamp(14px, 4vw, 19px);
-        line-height: 1.85;
-    }
-
-    .details-content {
-        top: 20%;
-    }
-
-    .detail-card {
-        margin: 10px 0;
-        padding: 8px 6px;
-    }
-
-    .theme-main {
-        top: 29%;
-    }
-
-    .theme-line {
-        top: 64%;
-    }
-
-    .theme-tagline {
-        top: 71%;
-    }
-}
-
-@media (max-width: 350px) {
+@media (max-width: 360px) {
     .poem {
         top: 23%;
-        font-size: 14px;
-        line-height: 1.8;
+        font-size: clamp(11px, 3.9cqw, 15px);
+        line-height: 1.7;
     }
 
     .photo-grid {
         height: 36%;
-    }
-
-    .nav-button {
-        padding: 10px 25px;
-        font-size: 15px;
     }
 
     .details-content {
@@ -724,39 +682,56 @@ body::after {
     }
 
     .detail-card {
-        margin: 8px 0;
-        padding: 7px 5px;
-    }
-}
-
-@media (max-height: 650px) {
-    .book-page {
-        height: calc(100dvh - 16px);
-        min-height: 0;
-    }
-
-    .details-content {
-        top: 15%;
-    }
-
-    .detail-card {
-        margin: 7px 0;
-        padding: 6px;
-    }
-
-    .poem {
-        top: 20%;
-        line-height: 1.7;
+        margin: 1.8cqw 0;
+        padding: 1.5cqw;
     }
 
     .navigation {
-        bottom: 5px;
+        bottom: 2%;
+    }
+}
+
+/* LANDSCAPE PHONES */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: 5px 0;
+    }
+
+    .book-page {
+        width: min(calc((100dvh - 14px) * 0.5625), calc(100vw - 16px));
+        margin: 2px auto;
+    }
+
+    .navigation {
+        bottom: 1.5%;
     }
 
     .nav-button {
-        padding: 9px 25px;
+        padding: 1.8cqw 4cqw;
     }
 }
+
+/* TABLETS AND DESKTOP */
+
+@media (min-width: 601px) {
+    .book-page {
+        width: min(480px, calc((100dvh - 24px) * 0.5625));
+    }
+}
+
+/* DARK MODE: KEEP ORIGINAL LIGHT DESIGN */
+
+@media (prefers-color-scheme: dark) {
+    html,
+    body,
+    .book-page {
+        color-scheme: only light;
+        forced-color-adjust: none;
+    }
+}
+
+/* ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -770,7 +745,8 @@ body::after {
 
 <body>
 
-<!-- OUTSIDE BACKGROUND DECORATIONS -->
+<!-- OUTSIDE DECORATIONS -->
+
 <div class="outer-particles">
     <span class="outer-particle">✦</span>
     <span class="outer-particle">✧</span>
@@ -787,6 +763,7 @@ body::after {
 <audio id="pageMusic" src="./song.mp3" loop preload="auto" playsinline></audio>
 
 <!-- PAGE 1 -->
+
 <section class="book-page active" id="page1">
     <img src="photos/first.png" class="background" alt="">
     <div class="page-overlay"></div>
@@ -816,6 +793,7 @@ body::after {
 </section>
 
 <!-- PAGE 2 -->
+
 <section class="book-page" id="page2">
     <img src="photos/second.png" class="background" alt="">
     <div class="page-overlay"></div>
@@ -862,6 +840,7 @@ body::after {
 </section>
 
 <!-- PAGE 3 -->
+
 <section class="book-page" id="page3">
     <img src="photos/third.png" class="background" alt="">
     <div class="page-overlay"></div>
@@ -906,6 +885,7 @@ body::after {
 </section>
 
 <!-- PAGE 4 -->
+
 <section class="book-page" id="page4">
     <img src="photos/fourth.png" class="background" alt="">
     <div class="page-overlay"></div>
@@ -949,6 +929,7 @@ body::after {
 </section>
 
 <!-- PAGE 5 -->
+
 <section class="book-page" id="page5">
     <img src="photos/fifth.png" class="background" alt="">
     <div class="page-overlay"></div>
@@ -1013,14 +994,10 @@ const totalPages = 5;
 const music = document.getElementById("pageMusic");
 let musicStarted = false;
 
-/* MUSIC SETTINGS */
 music.volume = 1;
 
-/*
-  IMPORTANT:
-  Mobile browsers block autoplay in many cases.
-  The first Open button click starts the music.
-*/
+/* MUSIC */
+
 function startMusic() {
     if (!music) return;
 
@@ -1037,19 +1014,14 @@ function startMusic() {
     }
 }
 
-/* TRY AUTOPLAY WHEN WEBSITE LOADS */
+/* TRY AUTOPLAY */
+
 window.addEventListener("load", function() {
     startMusic();
 });
 
-/* START AGAIN ON FIRST TOUCH/CLICK IF AUTOPLAY WAS BLOCKED */
-document.addEventListener("pointerdown", function() {
-    if (music.paused) {
-        startMusic();
-    }
-}, { once: true });
-
 /* SHOW PAGE */
+
 function showPage(page) {
     if (page < 1 || page > totalPages) return;
 
@@ -1072,9 +1044,8 @@ function showPage(page) {
 }
 
 /* NEXT PAGE */
+
 function nextPage() {
-    // Call play directly from the button click.
-    // This is important for mobile autoplay restrictions.
     startMusic();
 
     if (currentPage < totalPages) {
@@ -1082,13 +1053,15 @@ function nextPage() {
     }
 }
 
-/* RESTART INVITATION */
+/* RESTART */
+
 function restartInvitation() {
     startMusic();
     showPage(1);
 }
 
 /* MOBILE SWIPE - NEXT ONLY */
+
 let touchStartX = 0;
 let touchStartY = 0;
 
@@ -1104,7 +1077,6 @@ document.addEventListener("touchend", function(event) {
     const differenceX = touchStartX - touchEndX;
     const differenceY = Math.abs(touchStartY - touchEndY);
 
-    // Swipe left only. No previous-page option.
     if (differenceX > 70 && differenceY < 80) {
         if (currentPage < totalPages) {
             nextPage();
@@ -1113,6 +1085,7 @@ document.addEventListener("touchend", function(event) {
 }, { passive: true });
 
 /* KEYBOARD SUPPORT */
+
 document.addEventListener("keydown", function(event) {
     if (event.key === "ArrowRight") {
         nextPage();
